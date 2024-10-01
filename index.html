@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join My Discord">
+    <meta name="author" content="@Applimo | guns.lol">
+    <meta property="og:title" content="@Applimo | guns.lol">
+    <meta property="og:description" content="Join My Discord">
+    <meta property="og:image" content="https://og.guns.lol/api/og?username=applimo&amp;t=1727784982829">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@Applimo | guns.lol">
+    <meta name="twitter:description" content="Join My Discord">
+    <meta name="twitter:image" content="https://og.guns.lol/api/og?username=applimo&amp;t=1727784982829">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&amp;f[]=array@400&amp;display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="old meliodas.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="Vermin-Vibes.woff" as="font" type="font/woff" crossorigin="anonymous">
+    <title>@Applimo</title>
+
+    <style>
+        /* Styles généraux */
+        body {
+            margin: 0;
+            font-family: 'Satoshi', sans-serif;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        /* Vidéo en fond */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Couche d'assombrissement */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Assombrissement de 50% */
+            z-index: 0; /* Au-dessous du texte */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Section "Click to Enter" */
+        .click-to-enter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            font-weight: 500;
+            font-size: 34px;
+            z-index: 1;
+            position: relative;
+            cursor: pointer;
+            animation: glow 2s infinite alternate;
+            transition: transform 0.3s ease;
+        }
+
+        .click-to-enter:hover {
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Animation pour les titres et le contenu principal */
+        main {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+            z-index: 1;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s forwards ease-in-out;
+        }
+
+        main.active {
+            display: flex;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            font-family: 'Vermin Vibes', sans-serif;
+            font-size: 48px;
+            animation: bounce 0.5s ease-in-out forwards;
+        }
+
+        h3 {
+            font-family: 'Vermin Vibes', sans-serif;
+            color: #ffffff;
+            text-align: center;
+            z-index: 1;
+            position: relative;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            font-size: 24px;
+            animation: move 2s ease-in-out infinite alternate;
+            display: flex;
+            align-items: center; /* Centre le texte et l'image verticalement */
+        }
+
+        /* Style de l'image de l'arme */
+        .gun {
+            width: 50px; /* Ajustez la taille de l'arme */
+            opacity: 0; /* Commence invisible */
+            transition: opacity 0.3s ease, transform 0.3s ease; /* Transition pour rendre l'apparition douce */
+            margin-left: 10px; /* Espace entre le texte et l'image */
+            position: relative; /* Permet d'appliquer un mouvement */
+        }
+
+        h3:hover .gun {
+            opacity: 1; /* Rendre l'arme visible au survol */
+            transform: translateY(-5px); /* Déplace l'arme vers le haut */
+        }
+
+        /* Style des réseaux sociaux */
+        .socials {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .socials img {
+            width: 50px;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .socials img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Effet de lumière pour les éléments sélectionnables */
+        ::selection {
+            background: #ffffff;
+            color: #ffffff;
+        }
+
+        /* Animations CSS */
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.5),
+                             0 0 10px rgba(255, 255, 255, 0.4),
+                             0 0 20px rgba(255, 255, 255, 0.3);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+                             0 0 30px rgba(255, 255, 255, 0.7),
+                             0 0 50px rgba(255, 255, 255, 1);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Changer le curseur */
+        * {
+            cursor: url('https://r2.guns.lol/c07bc598-d35c-4573-85f6-31922eafbd8c.png') 16 16, auto !important;
+        }
+
+        /* Styles pour le suivi de la souris */
+        .cursor-follow {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.1s ease;
+            z-index: 2;
+        }
+
+        /* Style de la couronne */
+        .crown {
+            position: absolute;
+            top: -30px; /* Ajustez la position pour qu'elle soit au-dessus du texte */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px; /* Ajustez la taille de la couronne */
+            opacity: 0; /* Commence invisible */
+            transition: opacity 0.3s ease; /* Transition pour rendre l'apparition douce */
+        }
+
+        .crown.visible {
+            opacity: 1; /* Rend la couronne visible */
+        }
+
+        /* Effet de suivi vidéo */
+        .video-effect {
+            position: absolute;
+            width: 150px; /* Largeur de l'effet */
+            height: 150px; /* Hauteur de l'effet */
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2); /* Couleur de l'effet */
+            pointer-events: none;
+            transform: translate(-50%, -50%); /* Centrer sur le curseur */
+            filter: blur(20px); /* Flou pour l'effet */
+            transition: opacity 0.2s ease;
+            z-index: 1;
+            opacity: 0; /* Commence invisible */
+        }
+
+    </style>
+
+    <script src="https://sa.guns.lol/latest.js"></script>
+    <script src="https://assets.guns.lol/_pow.js" async></script>
+</head>
+<body>
+    <video id="bg-video" class="video-background" autoplay muted loop>
+        <source src="https://r2.guns.lol/fb04dbfb-6d85-4a38-a0da-8908b0b77e62.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+
+    <div class="overlay" id="overlay">
+        <div class="click-to-enter" id="click-to-enter">Click to Enter</div>
+    </div>
+
+    <main id="main-content">
+        <h1>
+            Applimo
+            <img src="crown.png" alt="Crown" class="crown">
+        </h1>
+        <h3>
+            Join My Discord
+            <img src="gun.png" alt="Gun" class="gun">
+        </h3>
+
+        <div class="socials">
+            <a href="https://discord.gg/Am3azErYGT" target="_blank">
+                <img src="https://r2.guns.lol/8f1311d2-1a82-40d6-b0b9-01dd31e51a76.webp" alt="Discord">
+            </a>
+        </div>
+    </main>
+
+    <!-- Effet de suivi vidéo -->
+    <div class="video-effect" id="video-effect"></div>
+
+    <!-- Curseur qui suit la souris -->
+    <div class="cursor-follow" id="cursor"></div>
+
+    <script>
+        // Récupérer les éléments HTML
+        const clickToEnter = document.getElementById('click-to-enter');
+        const mainContent = document.getElementById('main-content');
+        const overlay = document.getElementById('overlay');
+        const crown = document.querySelector('.crown'); // Sélectionnez la couronne
+        const gun = document.querySelector('.gun'); // Sélectionnez l'arme
+        const bgVideo = document.getElementById('bg-video'); // Sélectionnez la vidéo de fond
+        const videoEffect = document.getElementById('video-effect'); // Sélectionnez l'effet vidéo
+
+        // Ajouter un événement au clic sur "Click to Enter"
+        clickToEnter.addEventListener('click', function() {
+            // Suivre la vue
+            fetch('https://example.com/track-view', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ timestamp: Date.now() })
+            }).then(response => {
+                console.log('Vue enregistrée:', response);
+            }).catch(error => {
+                console.error('Erreur lors de l\'enregistrement de la vue:', error);
+            });
+
+            clickToEnter.classList.add('hidden'); // Cacher l'écran "Click to Enter"
+            overlay.classList.add('hidden'); // Cacher la couche d'assombrissement
+            mainContent.classList.add('active'); // Afficher le contenu principal
+            bgVideo.muted = false; // Activer le son de la vidéo
+            bgVideo.play(); // Joue la vidéo
+        });
+
+        // Ajouter des événements pour le survol de la souris sur le texte "Applimo"
+        const applimoText = document.querySelector('h1');
+        applimoText.addEventListener('mouseover', function() {
+            crown.classList.add('visible'); // Afficher la couronne
+        });
+
+        applimoText.addEventListener('mouseout', function() {
+            crown.classList.remove('visible'); // Masquer la couronne
+        });
+
+        // Ajouter des événements pour le survol de la souris sur le texte "Join My Discord"
+        const joinDiscordText = document.querySelector('h3');
+        joinDiscordText.addEventListener('mouseover', function() {
+            gun.classList.add('visible'); // Afficher l'arme
+        });
+
+        joinDiscordText.addEventListener('mouseout', function() {
+            gun.classList.remove('visible'); // Masquer l'arme
+        });
+
+        // Suivre la souris et mettre à jour l'effet vidéo
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.getElementById('cursor');
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+
+            // Mettre à jour la position de l'effet vidéo
+            videoEffect.style.left = `${e.clientX}px`;
+            videoEffect.style.top = `${e.clientY}px`;
+            videoEffect.style.opacity = 1; // Rendre l'effet visible
+
+            // Cacher l'effet après un court délai
+            clearTimeout(window.effectTimeout);
+            window.effectTimeout = setTimeout(() => {
+                videoEffect.style.opacity = 0; // Rendre l'effet invisible
+            }, 150); // Délai avant de cacher l'effet
+        });
+    </script>
+
+</body>
+</html>
